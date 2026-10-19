@@ -18,7 +18,8 @@ const User = new Schema({
         require : true,  
         trim : true,
         lowercase : true,
-        minLength : 4
+        minLength : 4,
+        unique:true
     },
     password : {
         type : String,
@@ -27,7 +28,7 @@ const User = new Schema({
     },
     age : {
         type : Number,
-        require : true,
+        require : true,  
         min : 18
     },
     about : {
@@ -47,7 +48,9 @@ const User = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
-    ]
+    ],
+    completed : [String],
+    wishlist : [String]
 
 },{timestamps : true});
 
