@@ -4,6 +4,9 @@ import User from "./models/User.js";
 import signupRouter from "./routers/signup.js";
 import cookieParser from "cookie-parser";
 import loginRouter from "./routers/login.js";
+import logoutRouter from "./routers/logout.js";
+import profileRouter from "./routers/profile.js";
+import requestRouter from "./routers/request.js";
 
 
 const app = express();
@@ -13,8 +16,9 @@ app.use(cookieParser());
 
 app.use("/",signupRouter)
 app.use("/",loginRouter)
-// app.use("/",profile)
-// app.use("/",request)
+app.use("/",logoutRouter)
+app.use("/",profileRouter)
+app.use("/",requestRouter)
 
 
 connectDB()

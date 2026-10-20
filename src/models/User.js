@@ -1,6 +1,13 @@
-import { mongoose , Schema, model} from "mongoose";
+import { Schema, model} from "mongoose";
 
 const User = new Schema({
+    userName : {
+        type : String,
+        require : true,
+        minLength : 4,
+        trim : true,
+        unique : true
+    },
     firstName : {
         type : String,
         require : true,
@@ -39,13 +46,13 @@ const User = new Schema({
     },
     followers : [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type : [String],
             ref: "User"
         }
     ],
     following : [
         {
-            type: mongoose.Schema.Types.ObjectId,
+            type:[String],
             ref: "User"
         }
     ],

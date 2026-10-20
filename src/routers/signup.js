@@ -10,7 +10,16 @@ signupRouter.post("/signup",async (req,res)=>{
     try{
 
         const useravailable = await User.findOne({email : req.body.email});
-         
+
+        const allowed = ["userName", "firstName", "lastName", "age", "email", "password"];
+        
+        allowed.forEach((fields)=>{
+            if(!Object.keys(req.body).includes(fields)){
+                throw new Error ("Missing field");
+            }
+        })
+
+
         if(useravailable){
             throw new Error("User already exist");
         }

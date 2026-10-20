@@ -1,6 +1,7 @@
 import express from "express";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import "dotenv/config.js"
 
 const loginRouter = express.Router();
@@ -12,6 +13,11 @@ loginRouter.post("/login",async (req,res)=>{
         if(!userAvailable){
             throw new Error ("User not Found");
         }
+
+        let isPassword = await bcrypt.compare (req.body.password , userAvailable.password);
+
+        if(!isPassword)
+            throw new Error("Wrong Password");
 
         const token = jwt.sign(
             {_id : userAvailable._id},
