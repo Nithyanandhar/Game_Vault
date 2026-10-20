@@ -7,6 +7,7 @@ import loginRouter from "./routers/login.js";
 import logoutRouter from "./routers/logout.js";
 import profileRouter from "./routers/profile.js";
 import requestRouter from "./routers/request.js";
+import gamesRouter from "./routers/games.js";
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use("/",loginRouter)
 app.use("/",logoutRouter)
 app.use("/",profileRouter)
 app.use("/",requestRouter)
+app.use("/",gamesRouter)
 
 
 connectDB()
